@@ -3,6 +3,8 @@
 A simple Flask-based web application to check plagiarism in uploaded text or Word documents. (with NLP) 
 The app extracts sentences from the document, searches Google using SerpAPI for similar content online, and calculates similarity scores to provide a plagiarism percentage.
 
+(This project is still in development)
+
 ---
 
 ## Features
