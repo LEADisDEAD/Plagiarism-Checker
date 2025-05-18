@@ -10,7 +10,7 @@ import re
 import os
 from dotenv import load_dotenv
 
-load_dotenv()  # To load environment variables from a .env file
+load_dotenv()
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
@@ -18,7 +18,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 app.secret_key = os.getenv('ogog', 'fallback_secret_key')  # Load secret key from .env or fallback to a default key
 
-# Retrieve the SerpAPI key from environment variables
+# SerpAPI key from .env file
 API_KEY = os.getenv('API_KEY')
 
 
@@ -38,7 +38,7 @@ def extract_random_phrases(content, num_phrases=40, phrase_length=40):
     total_words = len(words)
     if total_words < phrase_length * num_phrases:
         num_phrases = total_words // phrase_length
-        phrase_length = 1  # Extract individual words if the text is very short
+        phrase_length = 1
 
     phrases = set()
     while len(phrases) < num_phrases:
@@ -53,7 +53,7 @@ def get_top_google_results(phrase, num_results=3):
     if not API_KEY:
         raise ValueError("API_KEY is missing in environment variables.")
 
-    # SerpAPI setup
+    # SerpAPI seeetupp
     params = {
         "q": phrase,
         "api_key": API_KEY,
@@ -63,7 +63,7 @@ def get_top_google_results(phrase, num_results=3):
     search = GoogleSearch(params)
     results = search.get_dict()
 
-    # Extract links from the search results
+
     links = []
     for result in results.get("organic_results", []):
         links.append(result.get("link"))
@@ -79,7 +79,7 @@ def scrape_page_text(url):
         headers = {"User-Agent": "Mozilla/5.0"}
         response = requests.get(url, headers=headers, timeout=5)
         soup = BeautifulSoup(response.text, "html.parser")
-        # Remove script and style elements
+
         for script in soup(["script", "style"]):
             script.decompose()
         text = soup.get_text(separator=' ', strip=True)
@@ -123,7 +123,7 @@ def index():
 
 @app.route("/result")
 def result():
-    # Retrieve phrase_links from session
+
     phrase_links = session.get('phrase_links', [])
     total_percentage = calculate_total_percentage(phrase_links)
     return render_template("result.html", filename=session.get('filename', ''), phrase_links=phrase_links, total_percentage=total_percentage)
@@ -136,7 +136,7 @@ def upload_file():
     if uploaded_file.filename == "":
         return "No file selected."
 
-    # Ensure the uploaded file is either .txt or .docx
+
     if not (uploaded_file.filename.endswith(".txt") or uploaded_file.filename.endswith(".docx")):
         return "Unsupported file type. Please upload a .txt or .docx file."
 
@@ -162,7 +162,7 @@ def upload_file():
 
         phrase_links.append({"phrase": phrase, "links": enriched_links})
 
-    # Store phrase_links in session
+
     session['phrase_links'] = phrase_links
     session['filename'] = uploaded_file.filename
 
@@ -174,3 +174,4 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 # Using RE no NLP:wq
+#changed
