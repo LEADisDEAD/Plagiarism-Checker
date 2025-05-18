@@ -10,10 +10,11 @@ from docx import Document
 from nltk.tokenize import PunktSentenceTokenizer
 from dotenv import load_dotenv
 
-# Download punkt tokenizer if not already downloaded
+# PUNKT TOKENIZER NOT THE OTHER ONE
+
 nltk.download('punkt')
 tokenizer = PunktSentenceTokenizer()
-# Load spaCy English model
+
 nlp = spacy.load("en_core_web_sm")
 
 load_dotenv()
@@ -119,7 +120,7 @@ def calculate_total_percentage(phrase_links):
 
 @app.route("/", methods=["GET"])
 def index():
-    # Render upload page
+    # upload page hai
     return render_template("index.html")
 
 
