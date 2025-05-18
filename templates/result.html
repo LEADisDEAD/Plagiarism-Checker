@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plagiarism Check Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .summary {
+            background: #ffe0e0;
+            padding: 10px 15px;
+            border-left: 6px solid #e74c3c;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .phrase-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-left: 5px solid #2980b9;
+            background: #f9f9f9;
+        }
+        .phrase-text {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .link-item {
+            margin-left: 20px;
+            margin-bottom: 5px;
+        }
+        .match-score {
+            font-weight: bold;
+            color: #e67e22;
+        }
+        a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            margin-top: 30px;
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plagiarism Check Results</h1>
+        <p><strong>File:</strong> {{ filename }}</p>
+
+        <div class="summary">
+            🔍 <strong>Overall Estimated Plagiarism:</strong> {{ total_percentage }}%
+        </div>
+
+        {% for item in phrase_links %}
+            <div class="phrase-block">
+                <div class="phrase-text">Phrase: "{{ item['phrase'] }}"</div>
+                <div class="links">
+                    {% for link in item['links'] %}
+                        <div class="link-item">
+                            <span class="match-score">{{ link['match'] }}%</span> —
+                            <a href="{{ link['url'] }}" target="_blank">{{ link['url'] }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+        <a href="{{ url_for('index') }}" class="back-link">⬅ Back to Upload</a>
+    </div>
+</body>
+</html>

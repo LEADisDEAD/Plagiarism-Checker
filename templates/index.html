@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plagiarism Checker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9fafb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 60px auto 40px;
+            background: white;
+            padding: 30px 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p.description {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        button {
+            background-color: #2980b9;
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1c5980;
+        }
+
+        p.error {
+            color: #c0392b;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 15px 20px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            font-size: 0.9rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer a {
+            color: #ecf0f1;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Plagiarism Checker</h2>
+
+        <p class="description">
+            Upload a text (.txt) or Word (.docx) document to check for potential plagiarism.
+            The tool extracts key sentences from your document and compares them with content from
+            up to 3 websites per sentence to provide a similarity score.<br><br>
+
+            ⏳ It might take a few seconds to load results.<br>Please be patient while we check multiple sources.
+        </p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".txt,.docx" required>
+            <button type="submit">Upload</button>
+        </form>
+
+
+    </div>
+
+
+    <footer>
+        Made by Prathmesh &nbsp;|&nbsp;
+        <a href="https://www.linkedin.com/in/prathmesh-bajpai-8429652aa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </footer>
+</body>
+</html>
