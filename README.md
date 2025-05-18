@@ -40,6 +40,8 @@ The app extracts sentences from the document, searches Google using SerpAPI for 
 - Processing time may vary depending on file size and network speed.
 
 - .idea/ and other IDE-specific files are ignored via .gitignore.
+  
+- IMP : main.py file contains the same functionalities but instead of NLP it uses regex library (less accurate). If you want to use this version instead of NLP, you'd have to make some changes else, this file can be deleted or ignored. 
 
 ---
 
