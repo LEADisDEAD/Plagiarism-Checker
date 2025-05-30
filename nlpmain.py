@@ -63,7 +63,7 @@ def search_google(phrase):
             params={
                 "engine": "google",
                 "q": phrase[:300],  # Trim long queries
-                "api_key": "5c09317f51df2e8f6e9efd1f94fc74be1cb6efc8b296f7f800d3f047c9194fe3",
+                "api_key": SERP_API_KEYgi,
                 "num": 3
             },
             timeout=15
