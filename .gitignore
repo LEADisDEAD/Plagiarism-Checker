@@ -1,0 +1,21 @@
+# .gitignore
+.env
+__pycache__/
+*.pyc
+venv/
+env/
+*.env
+.idea/
+
+#node /react
+node_modules/
+npm-debug.log*
+package-lock.json
+
+#IDE
+.idea/
+.vscode/
+
+#system
+.DS_Store
+Thumbs.db

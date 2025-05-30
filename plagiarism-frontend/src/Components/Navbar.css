@@ -1,0 +1,30 @@
+
+.heading{
+    color: #f6f8d5;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    gap: 5%;
+
+    
+}
+
+.navbar{
+    background-color: #27548a;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    gap: 3vw;
+
+}
+
+.logo {
+    max-width: 100%;
+    height: 5vh;
+    max-height: 60%;
+    object-fit: contain;
+    margin-bottom: 1%;
+  }
+  

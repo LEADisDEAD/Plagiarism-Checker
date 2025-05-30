@@ -1,0 +1,70 @@
+.results-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.summary {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.score {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.score.high {
+  color: #dc3545;
+}
+
+.score.low {
+  color: #28a745;
+}
+
+.phrase-result {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.original-phrase {
+  font-style: italic;
+  color: #333;
+}
+
+.matches-list {
+  list-style: none;
+  padding: 0;
+}
+
+.matches-list li {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.matches-list a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.matches-list a:hover {
+  text-decoration: underline;
+}
+
+.no-matches {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.error-container {
+  text-align: center;
+  margin-top: 2rem;
+  color: #dc3545;
+}

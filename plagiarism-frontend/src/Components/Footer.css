@@ -1,0 +1,57 @@
+
+.footerBase {
+    background-color: #27548a;
+    color: #f6f8d5;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.part1 h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.55rem;
+    color: #f8f9fa;
+}
+
+.part1 p {
+    margin-bottom: 0.55rem;
+    line-height: 1.5;
+    color: #f6f8d5;
+    max-width: 300px;
+}
+
+
+
+.Contact {
+    min-width: 200px;
+}
+
+.Contact h2{
+    color: #f8f9fa;
+}
+
+.email {
+    list-style: none;
+    padding: 0;
+}
+
+.email  li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #495057;
+  color: #8eabc4;
+  font-size: 0.9rem;
+}
+
