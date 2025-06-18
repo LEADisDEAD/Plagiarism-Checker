@@ -10,7 +10,7 @@ from docx import Document
 from nltk.tokenize import PunktSentenceTokenizer
 from dotenv import load_dotenv
 from flask_cors import CORS
-
+load_dotenv()
 
 
 # PUNKT TOKENIZER NOT THE OTHER ONE
@@ -29,7 +29,7 @@ CORS(app, resources={
         "allow_headers": ["Content-Type"]
     }
 })
-load_dotenv()
+
 SERP_API_KEY = os.getenv("API_KEY")
 
 
@@ -63,7 +63,7 @@ def search_google(phrase):
             params={
                 "engine": "google",
                 "q": phrase[:300],  # Trim long queries
-                "api_key": SERP_API_KEYgi,
+                "api_key": SERP_API_KEY,
                 "num": 3
             },
             timeout=15
