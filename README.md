@@ -1,126 +1,166 @@
-# Plagiarism Checker 
+# Plagiarism Checker 🔍
 
-A simple Flask-based web application to check plagiarism in uploaded text or Word documents. (with NLP) 
-The app extracts sentences from the document, searches Google using SerpAPI for similar content online, and calculates similarity scores to provide a plagiarism percentage.
+A full-stack web application (Flask + React) to check plagiarism in uploaded text or Word documents using Natural Language Processing (NLP).  
+It uses **SerpAPI** to search the web and **spaCy** to calculate content similarity.
 
-(This project is still in development)
+🚧 _This project is still in development._
 
 ---
 
-## Features
+## 🔧 Features
 
 - Upload `.txt` or `.docx` files for plagiarism analysis.
-- Extracts multiple random sentences from the uploaded document.
-- Searches for similar content on Google via SerpAPI.
-- Calculates similarity scores using spaCy’s language model.
-- Displays detailed similarity results and overall plagiarism percentage.
-- User-friendly interface with status messages.
+- Extracts random sentences from the document.
+- Google search integration via SerpAPI to find similar content.
+- NLP-powered similarity score calculation using **spaCy**.
+- Displays individual sentence matches with links and scores.
+- Overall plagiarism percentage.
+- **Frontend built with React** for a modern UI.
 
 ---
 
-## How It Works
+## 🧠 How It Works
 
-- The uploaded file is read and parsed into text.
-
-- Sentences are tokenized and a random sample of 5 sentences is selected.
-
-- Each sentence is searched on Google via SerpAPI to find top 3 related web pages.
-
-- Text is fetched from those pages and compared with the sentence using spaCy’s similarity method.
-
-- Results for each phrase with URLs and similarity percentages are shown.
-
-- An overall plagiarism percentage is calculated based on weighted scores.
+1. The file is uploaded through the React interface.
+2. The Flask backend reads and parses the document.
+3. Five random sentences are selected.
+4. Each sentence is searched on Google using SerpAPI (top 3 results).
+5. Content from those pages is fetched and compared using `spaCy`'s similarity method.
+6. Results are displayed in the frontend with links and match scores.
+7. Final plagiarism percentage is calculated from all matches.
 
 ---
 
-## Notes
-- The app requires a working internet connection to query Google via SerpAPI and fetch webpage content.
+## 🗂 Folder Structure
 
-- The SerpAPI free tier has limited usage; consider this when testing.
-
-- Processing time may vary depending on file size and network speed.
-
-- .idea/ and other IDE-specific files are ignored via .gitignore.
-  
-- IMP : main.py file contains the same functionalities but instead of NLP it uses regex library (less accurate). If you want to use this version instead of NLP, you'd have to make some changes else, this file can be deleted or ignored. 
-
----
-
-## Folder Structure
-
-<pre>```
-  Plagiarism-Checker/
-  │
-  ├── templates/ # HTML templates (index.html, result.html)
-  ├── static/ # (Optional) CSS, JS, images for UI styling
-  ├── .gitignore # Git ignore file (.idea, pycache, etc.)
-  ├── nlpmain.py # Main Flask app code
-  ├── requirements.txt # Python dependencies
-  ├── README.md # This file
-  └── .env # Environment variables (API keys)
-```</pre>
+```
+Plagiarism-Checker/
+│
+├── frontend/             # React frontend
+│   ├── public/
+│   ├── src/
+│   └── ...
+│
+├── templates/            # Flask HTML templates (for legacy UI)
+├── static/               # Static files (CSS, JS, images)
+├── nlpmain.py            # Flask backend using NLP
+├── main.py               # Alternate version (regex-based)
+├── requirements.txt      # Python dependencies
+├── .gitignore
+├── .env                  # API key (not committed)
+└── README.md
+```
 
 ---
 
-### Prerequisites
+## 🚀 Getting Started
 
-- Python 3.7 or newer
-- pip (Python package installer)
-- A free [SerpAPI](https://serpapi.com/) account and API key (for Google search)
+### 📦 Prerequisites
+
+- Python 3.7+
+- Node.js + npm (for React frontend)
+- pip (Python package manager)
+- [SerpAPI](https://serpapi.com/) API key
 
 ---
 
-### Installation
+### ⚙️ Backend Setup (Flask)
 
 1. **Clone the repository**
 
-     ```bash
-     git clone https://github.com/LEADisDEAD/Plagiarism-Checker.git
-     cd Plagiarism-Checker
-     
-2. **Create a virtual environment (recommended)**
+```bash
+git clone https://github.com/LEADisDEAD/Plagiarism-Checker.git
+cd Plagiarism-Checker
+```
 
-    ```bash
-    python -m venv .venv
-    source .venv/bin/activate     # On Linux/macOS
-    .venv\Scripts\activate        # On Windows PowerShell
-    ```
+2. **Create virtual environment**
 
-3. **Install dependencies**
+```bash
+python -m venv .venv
+.venv\Scripts\activate       # Windows
+# OR
+source .venv/bin/activate   # macOS/Linux
+```
 
-    ```bash
-     pip install -r requirements.txt
-    ```
-    
-4. **Set up environment variables**
+3. **Install Python dependencies**
 
-    Create a .env file in the root directory with the following content:
+```bash
+pip install -r requirements.txt
+```
 
-    ```API_KEY=your_serpapi_key_here
-    Replace your_serpapi_key_here with your actual SerpAPI key.
-    ```
-    
-5. **Download spaCy English model**
+4. **Add your SerpAPI key**
 
-    ```bash
-    python -m spacy download en_core_web_sm
-    ```    
+Create a `.env` file in the root folder:
+
+```env
+API_KEY=your_serpapi_key_here
+```
+
+_(Do not share this key publicly or push it to GitHub.)_
+
+5. **Download spaCy model**
+
+```bash
+python -m spacy download en_core_web_md
+```
+
 ---
 
-## Contributing
-Contributions, issues, and feature requests are welcome!
-Feel free to fork the repository and submit pull requests.
+### 🎨 Frontend Setup (React)
+
+1. **Navigate to frontend folder**
+
+```bash
+cd frontend
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Start the React app**
+
+```bash
+npm start
+```
+
+4. **Frontend will run at** `http://localhost:3000` and connect to the Flask backend.
 
 ---
 
-## Author
+## 📝 Notes
 
-### Prathmesh Manoj Bajpai
-LinkedIn: (https://www.linkedin.com/in/prathmesh-bajpai-8429652aa/)
+- Make sure the Flask server is running on port 5000 and CORS is enabled.
+- You may need to adjust the proxy in `frontend/package.json` to match your Flask backend:
+```json
+"proxy": "http://localhost:5000"
+```
 
-### Aditi Ritesh Dixit 
-LinkedIn: (https://www.linkedin.com/in/aditi-dixit-895b551b5/)
+- `.env` file is required both locally and in deployment (on platforms like Render or Vercel).
+- Do **not commit your `.env` file** — it's already ignored via `.gitignore`.
 
+---
 
+## ⚠️ Alternate Backend Option
 
+The `main.py` file has the same core logic but uses basic regex matching instead of NLP (spaCy).  
+If you want a lighter and faster version with less accuracy, use this.
+
+---
+
+## 🤝 Contributing
+
+Pull requests, issues, and feature suggestions are welcome!  
+Feel free to fork the repo and contribute.
+
+---
+
+## 👩‍💻 Authors
+
+**Prathmesh Manoj Bajpai**  
+[LinkedIn](https://www.linkedin.com/in/prathmesh-bajpai-8429652aa/)
+
+**Aditi Ritesh Dixit**  
+[LinkedIn](https://www.linkedin.com/in/aditi-dixit-895b551b5/)
